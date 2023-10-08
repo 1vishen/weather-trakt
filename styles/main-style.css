@@ -1,0 +1,261 @@
+button,
+p,
+input,
+div {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+.body {
+    padding-bottom: 100px;
+}
+
+p {
+    font-family: 'Inter', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.app-name {
+    font-size: 20px;
+    font-weight: 100;
+    flex-shrink: 0;
+    color: black;
+}
+
+.logo {
+    max-width: 35px;
+    margin-right: 10px;
+    border: 1px solid black;
+    border-radius: 40px;
+}
+
+.search-box {
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 100;
+    flex: 4;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 40px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.github-button {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+    cursor: pointer;
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 40px;
+    border-color: black;
+    max-width: 140px;
+}
+
+.main-heading {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    justify-content: center;
+}
+
+.weather-info-main {
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.current-weather {
+
+    width: 300px;
+    height: 500px;
+    flex-shrink: 0;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.location-info {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: start;
+
+    border: 1px solid black;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+
+    padding-top: 20px;
+}
+
+.date-info {
+    margin-left: 10px;
+    display: flex;
+    justify-content: start;
+
+}
+
+.temperature-sky-info {
+    margin: 10px;
+}
+
+.current-temperature {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.sky-info {
+    margin-bottom: 20px;
+    font-size: 24px;
+
+}
+
+
+.location-icon,
+.date-icon {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.more-info {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 10px;
+    column-gap: 10px;
+    flex-grow: 1;
+    /*for the grid elements to grow and fill the remaining page*/
+    padding-right: 10px;
+
+}
+
+.info-card,
+.info-card-2 {
+
+    display: flex;
+    height: 245.5px;
+    border: 1px solid black;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.dynamic-current-weather-info-icon {
+    max-width: 120px;
+    min-width: 0px;
+    justify-content: left;
+    align-items: center;
+
+    border: 1px solid black;
+    border-left: 0px;
+    border-top: 0px;
+    border-bottom: 0px;
+
+}
+
+
+.minor-info-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: center;
+
+    padding: 10px;
+    margin: 10px;
+    width: 100px;
+    height: 80px;
+}
+
+.future-weather {
+
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 500px;
+    flex-shrink: 1;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.minor-info {
+    display: block;
+    font-size: 26px;
+    color: rgba(0, 0, 0, 0.65);
+    font-weight: 700;
+
+}
+
+.minor-info-2 {
+    display: block;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 1);
+    margin-top: 10px;
+
+}
+
+.week-info {
+    border: 1px solid black;
+
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 200px;
+
+    width: 90px;
+}
+
+.week-info-1 {
+    border: none;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 200px;
+
+    width: 90px;
+
+}
+
+.week-day {
+    margin-bottom: 10px;
+    font-size: 19px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.max-min {
+    font-weight: 700;
+}
