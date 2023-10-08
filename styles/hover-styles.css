@@ -1,3 +1,4 @@
+/*CSS file to handle hover and active pseudo classes, mainly for animations*/
 .app-name:hover {
     font-size: 20px;
     font-weight: 100;
@@ -11,7 +12,7 @@
     color: white;
 }
 
-.github-button:hover {
+.github-link:hover {
     font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-weight: 100;

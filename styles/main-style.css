@@ -1,5 +1,5 @@
+/*CSS file for main layout*/
 button,
-p,
 input,
 div {
     font-family: 'Inter', sans-serif;
@@ -13,8 +13,11 @@ div {
 
 p {
     font-family: 'Inter', sans-serif;
+    font-weight: 400;
     margin: 0px;
     padding: 0px;
+    color: rgb(15, 23, 42);
+
 }
 
 .header {
@@ -60,10 +63,12 @@ p {
     transition: border 0.15s, background-color 0.75s;
 }
 
-.github-button {
+.github-link {
     font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-weight: 100;
+    text-decoration: none;
+    text-align: center;
     cursor: pointer;
     flex: 1;
     margin: 10px;
@@ -74,6 +79,7 @@ p {
     border-color: black;
     max-width: 140px;
     background-color: rgba(206, 208, 211, 0.3);
+    color: rgb(15, 23, 42);
     transition: background-color 0.75s, color 0.5s;
 }
 
@@ -204,6 +210,22 @@ p {
     height: 80px;
 }
 
+.minor-info {
+    display: block;
+    font-size: 26px;
+    color: rgba(15, 23, 42, 0.65);
+    font-weight: 700;
+
+}
+
+.minor-info-2 {
+    display: block;
+    font-size: 20px;
+    color: rgba(15, 23, 42, 1);
+    margin-top: 10px;
+
+}
+
 .future-weather {
 
     display: flex;
@@ -223,56 +245,44 @@ p {
 
 }
 
-.minor-info {
-    display: block;
-    font-size: 26px;
-    color: rgba(15, 23, 42, 0.65);
-    font-weight: 700;
-
-}
-
-.minor-info-2 {
-    display: block;
-    font-size: 20px;
-    color: rgba(15, 23, 42, 1);
-    margin-top: 10px;
-
-}
-
 .week-info {
-    border: 1px solid black;
-
-    border-left: 0px;
-    border-right: 0px;
-    border-bottom: 0px;
-
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 200px;
-
-    width: 90px;
-}
-
-.week-info-1 {
     border: none;
 
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
-    padding-right: 200px;
+    padding-right: 10px;
 
-    width: 90px;
+    width: 100%;
+
 
 }
 
 .week-day {
     margin-bottom: 10px;
     font-size: 19px;
-    font-weight: 500;
+    font-weight: 700;
     color: rgba(15, 23, 42, 0.65);
+    width: 100%;
 }
 
-.max-min {
-    font-weight: 700;
+.min-max-temp{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    color: rgb(15, 23, 42);
+    width: 100%;
+}
+
+
+.underline{
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid black;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    width: 100%;
 }
