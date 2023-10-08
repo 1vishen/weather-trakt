@@ -4,6 +4,7 @@ input,
 div {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
+    color: rgb(15, 23, 42);
 }
 
 .body {
@@ -27,7 +28,14 @@ p {
     font-size: 20px;
     font-weight: 100;
     flex-shrink: 0;
-    color: black;
+    color: rgb(15, 23, 42);
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    background-color: rgba(153, 182, 225, 0.3);
+    padding: 10px;
+    transition: background-color 1s, color 1s;
+
 }
 
 .logo {
@@ -49,6 +57,7 @@ p {
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    transition: border 0.15s, background-color 0.75s;
 }
 
 .github-button {
@@ -64,6 +73,8 @@ p {
     border-radius: 40px;
     border-color: black;
     max-width: 140px;
+    background-color: rgba(206, 208, 211, 0.3);
+    transition: background-color 0.75s, color 0.5s;
 }
 
 .main-heading {
@@ -73,6 +84,7 @@ p {
     font-size: 28px;
     font-weight: 700;
     justify-content: center;
+    color: rgb(15, 23, 42);
 }
 
 .weather-info-main {
@@ -89,8 +101,9 @@ p {
     height: 500px;
     flex-shrink: 0;
     margin: 10px;
-    border: 1px solid black;
     border-radius: 8px;
+    background-color: rgba(206, 208, 211, 0.3);
+    transition: background-color 0.75s;
 }
 
 .location-info {
@@ -155,11 +168,12 @@ p {
 
     display: flex;
     height: 245.5px;
-    border: 1px solid black;
+    border: none;
     border-radius: 8px;
     justify-content: center;
     align-items: center;
-
+    background-color: rgba(206, 208, 211, 0.3);
+    transition: background-color 0.75s, color 0.5s;
 }
 
 
@@ -198,18 +212,21 @@ p {
     height: 500px;
     flex-shrink: 1;
     margin: 10px;
-    border: 1px solid black;
+    border: none;
     border-radius: 8px;
     align-items: flex-start;
     justify-content: space-around;
     padding-left: 10px;
     padding-right: 10px;
+    background-color: rgba(206, 208, 211, 0.3);
+    transition: background-color 0.75s, color 0.5s;
+
 }
 
 .minor-info {
     display: block;
     font-size: 26px;
-    color: rgba(0, 0, 0, 0.65);
+    color: rgba(15, 23, 42, 0.65);
     font-weight: 700;
 
 }
@@ -217,7 +234,7 @@ p {
 .minor-info-2 {
     display: block;
     font-size: 20px;
-    color: rgba(0, 0, 0, 1);
+    color: rgba(15, 23, 42, 1);
     margin-top: 10px;
 
 }
@@ -253,7 +270,7 @@ p {
     margin-bottom: 10px;
     font-size: 19px;
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.7);
+    color: rgba(15, 23, 42, 0.65);
 }
 
 .max-min {
