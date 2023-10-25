@@ -8,7 +8,7 @@ div {
 }
 
 .body {
-    padding-bottom: 100px;
+    padding-bottom: 10px;
 }
 
 p {
@@ -37,14 +37,14 @@ p {
     border-radius: 20px;
     background-color: rgba(153, 182, 225, 0.3);
     padding: 10px;
-    transition: background-color 1s, color 1s;
+    transition: background-color 0.75s, color 0.5s;
 
 }
 
 .logo {
     max-width: 35px;
     margin-right: 10px;
-    border: 1px solid black;
+    border: 1px solid rgb(15, 23, 42);
     border-radius: 40px;
 }
 
@@ -55,7 +55,7 @@ p {
     font-weight: 100;
     flex: 4;
     margin: 10px;
-    border: 1px solid black;
+    border: 1px solid rgb(15, 23, 42);
     border-radius: 40px;
     padding-left: 10px;
     padding-top: 10px;
@@ -107,6 +107,7 @@ p {
     height: 500px;
     flex-shrink: 0;
     margin: 10px;
+    border: 1px solid rgb(15, 23, 42);
     border-radius: 8px;
     background-color: rgba(206, 208, 211, 0.3);
     transition: background-color 0.75s;
@@ -156,7 +157,7 @@ p {
     margin-bottom: 10px;
 }
 
-.more-info {
+.detailed-info {
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -174,6 +175,7 @@ p {
 
     display: flex;
     height: 245.5px;
+    min-width: 150px;
     border: none;
     border-radius: 8px;
     justify-content: center;
@@ -183,9 +185,9 @@ p {
 }
 
 
-.dynamic-current-weather-info-icon {
+.current-weather-info-icon {
     max-width: 120px;
-    min-width: 0px;
+    min-width: 0;
     justify-content: left;
     align-items: center;
 
@@ -203,6 +205,8 @@ p {
     flex-direction: column;
     justify-content: right;
     align-items: center;
+
+    min-width: 120px;
 
     padding: 10px;
     margin: 10px;
