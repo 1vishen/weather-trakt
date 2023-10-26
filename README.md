@@ -32,6 +32,3 @@ This project uses the OpenWeather API to fetch weather data. You will need to ob
 ## Acknowledgments
 
 - Weather data provided by [OpenWeather](https://openweathermap.org/).
-
-
-v
