@@ -313,3 +313,33 @@ p {
     border-right: 0px;
     width: 100%;
 }
+
+.credits {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+
+    text-decoration: none;
+    text-align: center;
+
+    max-width: 100%;
+
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+
+    background-color: rgba(206, 208, 211, 0.3);
+    color: rgb(15, 23, 42);
+}
+.footer-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+
+    text-decoration: none;
+
+    border: none;
+
+    color: rgb(15, 23, 42);
+}
