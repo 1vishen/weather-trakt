@@ -17,7 +17,7 @@ function handleSubmit(event) {
 form.addEventListener('submit', handleSubmit);
 
 async function getLatLon(city) {
-    const apiLatLonUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&units=metric&appid=${apiKey}`;
+    const apiLatLonUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&units=metric&appid=${apiKey}`;
 
     const response = await fetch(apiLatLonUrl);
     const dataLatLon = await response.json();
