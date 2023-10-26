@@ -6,10 +6,8 @@ const apiKey = "059efa9e9bc9c515031e2f68eb49d4a5";
 const form = document.querySelector('.search-form');
 const searchBox = document.querySelector('.search-box');
 
-let lat;
-let lon;
-let dataLatLon;
-let cityName, temp, description, todayDate, wind, humidity, pressure, visibility, sunrise, sunset, maxTemp, minTemp;
+let Darjeeling = "Darjeeling";
+getLatLon(Darjeeling);
 
 function handleSubmit(event) {
     event.preventDefault(); //to prevent the default behaviour of the form which is reloading instantly
@@ -26,8 +24,8 @@ async function getLatLon(city) {
 
     console.log(dataLatLon);
 
-    let lat = dataLatLon[0].lat;
-    let lon = dataLatLon[0].lon;
+    const lat = dataLatLon[0].lat;
+    const lon = dataLatLon[0].lon;
 
     getWeather(lat, lon, dataLatLon);
 
@@ -46,20 +44,36 @@ async function getWeather(lat, lon, dataLatLon) {
 }
 
 function updateData(dataLatLon, weatherData) {
+    
     const cityName = dataLatLon[0].name;
     const temp = weatherData.main.temp;
     const description = weatherData.weather[0].description;
     
-    const todayDate = weatherData.timezone;
-    
-    const wind = weatherData.wind.speed;
+    const wind = Math.round((weatherData.wind.speed) * (18 / 5));
     const humidity = weatherData.main.humidity;
     const pressure = weatherData.main.pressure;
-    const visibility = weatherData.visibility;
-    const sunrise = weatherData.sys.sunrise;
-    const sunset = weatherData.sys.sunset;
+
+    const visibility = (weatherData.visibility) / 1000; //to convert m to km
+
     const maxTemp = weatherData.main.temp_max;
     const minTemp = weatherData.main.temp_min;
+
+    let result = unixToHuman(weatherData.dt);
+    console.log(result);
+    const todayDate = result.dateNow;
+    const todayMonth = result.month;
+    const todayDay = result.dayOfWeek;
+    const todayHours = result.hours;
+
+    result = unixToHuman(weatherData.sys.sunrise);
+    console.log(result);
+    const sunrise = result.hours + ":" + result.minutes;
+
+    result = unixToHuman(weatherData.sys.sunset);
+    console.log(result);
+    const sunset = result.hours + ":" + result.minutes;
+
+    const weatherId = weatherData.weather[0].id;
 
     console.log(cityName);
     console.log(temp);
@@ -74,15 +88,18 @@ function updateData(dataLatLon, weatherData) {
     console.log(maxTemp);
     console.log(minTemp);
 
-    updateSite(cityName, temp, description, todayDate, wind, humidity, pressure, visibility, sunrise, sunset, maxTemp, minTemp);
+    updateSite(cityName, temp, description, todayDate, todayMonth, todayDay, wind, humidity, pressure, visibility, sunrise, sunset, maxTemp, minTemp);
+    updateIcon(weatherId, todayHours);
 
 }
 
-function updateSite(cityName, temp, description, todayDate, wind, humidity, pressure, visibility, sunrise, sunset, maxTemp, minTemp) {
+function updateSite(cityName, temp, description, todayDate, todayMonth, todayDay, wind, humidity, pressure, visibility, sunrise, sunset, maxTemp, minTemp) {
     document.getElementById('city-info-t').textContent = cityName;
     document.getElementById('current-temperature-t').textContent = temp;
     document.getElementById('description').textContent = description;
-    document.getElementById('date-time-info-t').textContent = todayDate;
+    document.getElementById('date-info-t').textContent = todayDate;
+    document.getElementById('month-info-t').textContent = todayMonth;
+    document.getElementById('day-info-t').textContent = todayDay;
     document.getElementById('wind').textContent = wind;
     document.getElementById('humidity').textContent = humidity;
     document.getElementById('pressure').textContent = pressure;
@@ -104,15 +121,85 @@ function updateSite(cityName, temp, description, todayDate, wind, humidity, pres
     document.getElementById('minTemp5').textContent = minTemp;
 }
 
+function unixToHuman(unixTime) {
+    const date = new Date(unixTime * 1000);
+
+    const year = date.getFullYear();
+    const dateNow = date.getDate();
+
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    const dayNumber = date.getDay();
+    const monthNumber = date.getMonth();
+    const allMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const allWeekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+    const month = allMonths[monthNumber];
+    const dayOfWeek = allWeekDays[dayNumber];
+
+    return {
+        year: year,
+        month: month,
+        dateNow: dateNow,
+        dayOfWeek: dayOfWeek,
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds
+    }
+
+}
+
+function updateIcon (weatherId, todayHours) {
+    
+    /*
+    let dayNight;
+    if (todayHours >= 6 && todayHours <= 18) {
+        dayNight = "day";
+    }
+    else {
+        dayNight = "night";
+    }
+
+    console.log(dayNight);
+    console.log(todayHours);
+    */
 
 
 
+    let iconSrc;
+    
+    if(weatherId <= 299) {
+        iconSrc = `images/animated/11d.svg`;    
+    }
+    else if (weatherId >= 300 && weatherId <= 399) {
+        iconSrc = `images/animated/10d.svg`;    
+    }
+    else if (weatherId >= 500 && weatherId <= 599) {
+        iconSrc = `images/animated/09d.svg`;    
+    }
+    else if (weatherId >= 600 && weatherId <= 699) {
+        iconSrc = `images/animated/13d.svg`;    
+    }
+    else if (weatherId >= 700 && weatherId <= 799) {
+        iconSrc = `images/animated/50d.svg`;    
+    }
+    else if (weatherId >= 801 && weatherId <= 899) {
+        iconSrc = `images/animated/04d.svg`;    
+    }
+    else if (weatherId === 800) {
+        iconSrc = `images/animated/01d.svg`;    
+    }
+    else {
+        iconSrc = `images/animated/50d.svg`;    
+    }
 
+    const weatherIcon = document.getElementById('dynamic-current-weather-icon-t');
+    weatherIcon.src = iconSrc;
 
+    console.log(weatherId);
 
-
-
-
-
-
-
+    document.getElementById('main-heading-t').textContent = "Today's Overview";
+    
+}
