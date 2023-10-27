@@ -1,7 +1,7 @@
 //main js code for the weather-trakt app
 
 const apiKey = "059efa9e9bc9c515031e2f68eb49d4a5";
-//const apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&units=metric&appid=${apiKey}`;
+//const apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&units=metric&appid=${apiKey}`;
 
 const form = document.querySelector('.search-form');
 const searchBox = document.querySelector('.search-box');
@@ -44,11 +44,11 @@ async function getWeather(lat, lon, dataLatLon) {
 }
 
 function updateData(dataLatLon, weatherData) {
-    
+
     const cityName = dataLatLon[0].name;
     const temp = weatherData.main.temp;
     const description = weatherData.weather[0].description;
-    
+
     const wind = Math.round((weatherData.wind.speed) * (18 / 5));
     const humidity = weatherData.main.humidity;
     const pressure = weatherData.main.pressure;
@@ -63,7 +63,6 @@ function updateData(dataLatLon, weatherData) {
     const todayDate = result.dateNow;
     const todayMonth = result.month;
     const todayDay = result.dayOfWeek;
-    const todayHours = result.hours;
 
     result = unixToHuman(weatherData.sys.sunrise);
     console.log(result);
@@ -74,6 +73,7 @@ function updateData(dataLatLon, weatherData) {
     const sunset = result.hours + ":" + result.minutes;
 
     const weatherId = weatherData.weather[0].id;
+    const dayNightByIcon = weatherData.weather[0].icon;
 
     console.log(cityName);
     console.log(temp);
@@ -89,7 +89,7 @@ function updateData(dataLatLon, weatherData) {
     console.log(minTemp);
 
     updateSite(cityName, temp, description, todayDate, todayMonth, todayDay, wind, humidity, pressure, visibility, sunrise, sunset, maxTemp, minTemp);
-    updateIcon(weatherId, todayHours);
+    updateIcon(weatherId, dayNightByIcon);
 
 }
 
@@ -151,11 +151,13 @@ function unixToHuman(unixTime) {
 
 }
 
-function updateIcon (weatherId, todayHours) {
-    
-    /*
+function updateIcon(weatherId, dayNightByIcon) {
+
+
     let dayNight;
-    if (todayHours >= 6 && todayHours <= 18) {
+    if (dayNightByIcon === "01d" || dayNightByIcon === "02d" || dayNightByIcon === "03d" ||
+        dayNightByIcon === "04d" || dayNightByIcon === "09d" || dayNightByIcon === "10d" ||
+        dayNightByIcon === "11d" || dayNightByIcon === "13d" || dayNightByIcon === "50d") {
         dayNight = "day";
     }
     else {
@@ -163,36 +165,67 @@ function updateIcon (weatherId, todayHours) {
     }
 
     console.log(dayNight);
-    console.log(todayHours);
-    */
-
-
 
     let iconSrc;
-    
-    if(weatherId <= 299) {
-        iconSrc = `images/animated/11d.svg`;    
+
+    if (weatherId <= 299) {
+        if (dayNight === "day") {
+            iconSrc = `images/animated/11d.svg`;
+        }
+        else {
+            iconSrc = `images/animated/11n.svg`;
+        }
     }
     else if (weatherId >= 300 && weatherId <= 399) {
-        iconSrc = `images/animated/10d.svg`;    
+        if (dayNight === "day") {
+            iconSrc = `images/animated/10d.svg`;
+        }
+        else {
+            iconSrc = `images/animated/10n.svg`;
+        }    
     }
     else if (weatherId >= 500 && weatherId <= 599) {
-        iconSrc = `images/animated/09d.svg`;    
+        if (dayNight === "day") {
+            iconSrc = `images/animated/09d.svg`;
+        }
+        else {
+            iconSrc = `images/animated/09n.svg`;
+        }   
     }
     else if (weatherId >= 600 && weatherId <= 699) {
-        iconSrc = `images/animated/13d.svg`;    
+        if (dayNight === "day") {
+            iconSrc = `images/animated/13d.svg`;
+        }
+        else {
+            iconSrc = `images/animated/13n.svg`;
+        }    
     }
     else if (weatherId >= 700 && weatherId <= 799) {
-        iconSrc = `images/animated/50d.svg`;    
+        if (dayNight === "day") {
+            iconSrc = `images/animated/50d.svg`;
+        }
+        else {
+            iconSrc = `images/animated/50n.svg`;
+        }    
     }
     else if (weatherId >= 801 && weatherId <= 899) {
-        iconSrc = `images/animated/04d.svg`;    
+        if (dayNight === "day") {
+            iconSrc = `images/animated/02d.svg`;
+        }
+        else {
+            iconSrc = `images/animated/02n.svg`;
+        }    
     }
     else if (weatherId === 800) {
-        iconSrc = `images/animated/01d.svg`;    
+        if (dayNight === "day") {
+            iconSrc = `images/animated/01d.svg`;
+        }
+        else {
+            iconSrc = `images/animated/01n.svg`;
+        }    
     }
     else {
-        iconSrc = `images/animated/50d.svg`;    
+        iconSrc = `images/animated/50d.svg`;
     }
 
     const weatherIcon = document.getElementById('dynamic-current-weather-icon-t');
@@ -201,5 +234,5 @@ function updateIcon (weatherId, todayHours) {
     console.log(weatherId);
 
     document.getElementById('main-heading-t').textContent = "Today's Overview";
-    
+
 }
