@@ -22,12 +22,14 @@ async function getLatLon(city) {
     const response = await fetch(apiLatLonUrl);
     const dataLatLon = await response.json();
 
+    console.log("dataLatLon");
     console.log(dataLatLon);
 
     const lat = dataLatLon[0].lat;
     const lon = dataLatLon[0].lon;
 
     getWeather(lat, lon, dataLatLon);
+    getWeatherOneWeek(lat, lon);
 
 }
 
@@ -37,6 +39,7 @@ async function getWeather(lat, lon, dataLatLon) {
     const response = await fetch(apiUrl);
     const weatherData = await response.json();
 
+    console.log("weatherData");
     console.log(weatherData);
 
     updateData(dataLatLon, weatherData);
@@ -55,9 +58,7 @@ function updateData(dataLatLon, weatherData) {
 
     const visibility = (weatherData.visibility) / 1000; //to convert m to km
 
-    const maxTemp = weatherData.main.temp_max;
-    const minTemp = weatherData.main.temp_min;
-
+    console.log("result: unixToHuman date, sunrise, time etc.");
     let result = unixToHuman(weatherData.dt);
     console.log(result);
     const todayDate = result.dateNow;
@@ -75,6 +76,7 @@ function updateData(dataLatLon, weatherData) {
     const weatherId = weatherData.weather[0].id;
     const dayNightByIcon = weatherData.weather[0].icon;
 
+    console.log("Various details for the current city")
     console.log(cityName);
     console.log(temp);
     console.log(description);
@@ -85,15 +87,13 @@ function updateData(dataLatLon, weatherData) {
     console.log(visibility);
     console.log(sunrise);
     console.log(sunset);
-    console.log(maxTemp);
-    console.log(minTemp);
 
-    updateSite(cityName, temp, description, todayDate, todayMonth, todayDay, wind, humidity, pressure, visibility, sunrise, sunset, maxTemp, minTemp);
+    updateSite(cityName, temp, description, todayDate, todayMonth, todayDay, wind, humidity, pressure, visibility, sunrise, sunset);
     updateIcon(weatherId, dayNightByIcon);
 
 }
 
-function updateSite(cityName, temp, description, todayDate, todayMonth, todayDay, wind, humidity, pressure, visibility, sunrise, sunset, maxTemp, minTemp) {
+function updateSite(cityName, temp, description, todayDate, todayMonth, todayDay, wind, humidity, pressure, visibility, sunrise, sunset) {
     document.getElementById('city-info-t').textContent = cityName;
     document.getElementById('current-temperature-t').textContent = temp;
     document.getElementById('description').textContent = description;
@@ -106,21 +106,52 @@ function updateSite(cityName, temp, description, todayDate, todayMonth, todayDay
     document.getElementById('visibility').textContent = visibility;
     document.getElementById('sunrise').textContent = sunrise;
     document.getElementById('sunset').textContent = sunset;
-    document.getElementById('maxTemp').textContent = maxTemp;
-    document.getElementById('minTemp').textContent = minTemp;
 
-    document.getElementById('maxTemp1').textContent = maxTemp;
-    document.getElementById('minTemp1').textContent = minTemp;
-    document.getElementById('maxTemp2').textContent = maxTemp;
-    document.getElementById('minTemp2').textContent = minTemp;
-    document.getElementById('maxTemp3').textContent = maxTemp;
-    document.getElementById('minTemp3').textContent = minTemp;
-    document.getElementById('maxTemp4').textContent = maxTemp;
-    document.getElementById('minTemp4').textContent = minTemp;
-    document.getElementById('maxTemp5').textContent = maxTemp;
-    document.getElementById('minTemp5').textContent = minTemp;
 }
 
+//Code for weather data of one week from today's date
+async function getWeatherOneWeek(lat, lon) {
+    const apiUrlWeek = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+
+    const responseWeek = await fetch(apiUrlWeek);
+    const OneWeekWeatherData = await responseWeek.json();
+
+    console.log("OneWeekWeatherData")
+    console.log(OneWeekWeatherData);
+
+    updateDataOneWeek(OneWeekWeatherData, 0, 1);
+    updateDataOneWeek(OneWeekWeatherData, 9, 2);
+    updateDataOneWeek(OneWeekWeatherData, 17, 3);
+    updateDataOneWeek(OneWeekWeatherData, 25, 4);
+    updateDataOneWeek(OneWeekWeatherData, 33, 5);
+}
+
+function updateDataOneWeek(OneWeekWeatherData, timestampForTheDay, elementId) {
+    const maxTemp = OneWeekWeatherData.list[timestampForTheDay].main.temp_max;
+    const minTemp = OneWeekWeatherData.list[timestampForTheDay].main.temp_min;
+    const weekDay = OneWeekWeatherData.list[timestampForTheDay].dt;
+
+    console.log("max min temp for 5 days");
+    console.log(maxTemp);
+    console.log(minTemp);
+
+    const resultOneWeek = unixToHuman(weekDay);
+    console.log("resultOneWeek");
+    console.log(resultOneWeek);
+    const futureWeekDay = resultOneWeek.dayOfWeek;
+
+    updateSiteOneWeek(maxTemp, minTemp, elementId, futureWeekDay);
+}
+
+function updateSiteOneWeek(maxTemp, minTemp, elementId, futureWeekDay) {
+
+    document.getElementById(`maxTemp${elementId}`).textContent = maxTemp;
+    document.getElementById(`minTemp${elementId}`).textContent = minTemp;
+    document.getElementById(`week-day-${elementId}`).textContent = futureWeekDay;
+
+}
+
+//this function converts UNIX time to human readable time
 function unixToHuman(unixTime) {
     const date = new Date(unixTime * 1000);
 
@@ -151,6 +182,7 @@ function unixToHuman(unixTime) {
 
 }
 
+//this function updates all the icons on the page
 function updateIcon(weatherId, dayNightByIcon) {
 
 
@@ -182,7 +214,7 @@ function updateIcon(weatherId, dayNightByIcon) {
         }
         else {
             iconSrc = `images/animated/10n.svg`;
-        }    
+        }
     }
     else if (weatherId >= 500 && weatherId <= 599) {
         if (dayNight === "day") {
@@ -190,7 +222,7 @@ function updateIcon(weatherId, dayNightByIcon) {
         }
         else {
             iconSrc = `images/animated/09n.svg`;
-        }   
+        }
     }
     else if (weatherId >= 600 && weatherId <= 699) {
         if (dayNight === "day") {
@@ -198,7 +230,7 @@ function updateIcon(weatherId, dayNightByIcon) {
         }
         else {
             iconSrc = `images/animated/13n.svg`;
-        }    
+        }
     }
     else if (weatherId >= 700 && weatherId <= 799) {
         if (dayNight === "day") {
@@ -206,7 +238,7 @@ function updateIcon(weatherId, dayNightByIcon) {
         }
         else {
             iconSrc = `images/animated/50n.svg`;
-        }    
+        }
     }
     else if (weatherId >= 801 && weatherId <= 899) {
         if (dayNight === "day") {
@@ -214,7 +246,7 @@ function updateIcon(weatherId, dayNightByIcon) {
         }
         else {
             iconSrc = `images/animated/02n.svg`;
-        }    
+        }
     }
     else if (weatherId === 800) {
         if (dayNight === "day") {
@@ -222,7 +254,7 @@ function updateIcon(weatherId, dayNightByIcon) {
         }
         else {
             iconSrc = `images/animated/01n.svg`;
-        }    
+        }
     }
     else {
         iconSrc = `images/animated/50d.svg`;
@@ -231,6 +263,7 @@ function updateIcon(weatherId, dayNightByIcon) {
     const weatherIcon = document.getElementById('dynamic-current-weather-icon-t');
     weatherIcon.src = iconSrc;
 
+    console.log("weatherId");
     console.log(weatherId);
 
     document.getElementById('main-heading-t').textContent = "Today's Overview";

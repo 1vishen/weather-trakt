@@ -110,3 +110,56 @@
 
     color: rgb(15, 23, 42);
 }
+
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+
+    .logo:hover {
+        width: 25px;
+    }
+
+    .app-name:hover {
+        width: 90px;
+        font-size: 15px;
+    }
+
+    .github-link:hover {
+        width: 50px;
+        font-size: 15px;
+    }
+
+    .weather-info-main:hover {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .current-weather:hover {
+        width: 100%;
+    }
+
+    .detailed-info:hover {
+        display: block;
+        width: 100%;
+    }
+
+    .info-card:hover,
+    .info-card-2:hover {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .future-weather:hover {
+        width: 100%;
+    }
+}
+
+/* Media query for tablets */
+@media (min-width: 768px) and (max-width: 1075px) {
+
+    .min-max-temp:hover {
+        white-space: nowrap; /* Prevent text from wrapping to the next line*/
+    }
+}

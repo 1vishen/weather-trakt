@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;700&display=swap" rel="stylesheet">
 
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
     <link rel="stylesheet" href="styles/main-style.css">
     <link rel="stylesheet" href="styles/hover-styles.css">
 
@@ -53,7 +55,8 @@
             <div class="date-info">
                 <img class="date-icon" src="images/animated/calendar3.svg">
                 <p class="date-time-info"><span id="date-info-t">&#183 </span> <span id="month-info-t">&#183 </span>,
-                    <span id="day-info-t">&#183</span></p>
+                    <span id="day-info-t">&#183</span>
+                </p>
             </div>
 
 
@@ -115,31 +118,23 @@
         <div class="future-weather">
 
             <div class="week-info">
-                <p class="week-day">Friday</p>
-                <p class="min-max-temp"> Min:&nbsp <span id="minTemp">&#183 &#183 &#183</span>&nbsp&deg;C /
-                    Max:&nbsp<span id="maxTemp">&#183 &#183 &#183</span>&nbsp&deg;C</p>
-            </div>
-
-            <div class="underline"></div>
-
-            <div class="week-info">
-                <p class="week-day">Saturday</p>
-                <p class="min-max-temp"> Min:&nbsp<span id="minTemp1">&#183 &#183 &#183</span>&nbsp&deg;C /
+                <p class="week-day" id="week-day-1">&#183 &#183 &#183</p>
+                <p class="min-max-temp"> Min:&nbsp <span id="minTemp1">&#183 &#183 &#183</span>&nbsp&deg;C /
                     Max:&nbsp<span id="maxTemp1">&#183 &#183 &#183</span>&nbsp&deg;C</p>
             </div>
 
             <div class="underline"></div>
 
             <div class="week-info">
-                <p class="week-day">Sunday</p>
-                <p class="min-max-temp"> Min:&nbsp <span id="minTemp2">&#183 &#183 &#183</span>&nbsp&deg;C /
+                <p class="week-day" id="week-day-2">&#183 &#183 &#183</p>
+                <p class="min-max-temp"> Min:&nbsp<span id="minTemp2">&#183 &#183 &#183</span>&nbsp&deg;C /
                     Max:&nbsp<span id="maxTemp2">&#183 &#183 &#183</span>&nbsp&deg;C</p>
             </div>
 
             <div class="underline"></div>
 
             <div class="week-info">
-                <p class="week-day">Monday</p>
+                <p class="week-day" id="week-day-3">&#183 &#183 &#183</p>
                 <p class="min-max-temp"> Min:&nbsp <span id="minTemp3">&#183 &#183 &#183</span>&nbsp&deg;C /
                     Max:&nbsp<span id="maxTemp3">&#183 &#183 &#183</span>&nbsp&deg;C</p>
             </div>
@@ -147,7 +142,7 @@
             <div class="underline"></div>
 
             <div class="week-info">
-                <p class="week-day">Tuesday</p>
+                <p class="week-day" id="week-day-4">&#183 &#183 &#183</p>
                 <p class="min-max-temp"> Min:&nbsp <span id="minTemp4">&#183 &#183 &#183</span>&nbsp&deg;C /
                     Max:&nbsp<span id="maxTemp4">&#183 &#183 &#183</span>&nbsp&deg;C</p>
             </div>
@@ -155,7 +150,7 @@
             <div class="underline"></div>
 
             <div class="week-info">
-                <p class="week-day">Wednesday</p>
+                <p class="week-day" id="week-day-5">&#183 &#183 &#183</p>
                 <p class="min-max-temp"> Min:&nbsp <span id="minTemp5">&#183 &#183 &#183</span>&nbsp&deg;C /
                     Max:&nbsp<span id="maxTemp5">&#183 &#183 &#183</span>&nbsp&deg;C</p>
             </div>
@@ -170,6 +165,7 @@
     </div>
 
     <script src="trakt-app.js"></script>
+
 
 </body>
 
