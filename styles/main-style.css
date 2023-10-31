@@ -329,6 +329,8 @@ p {
 
     background-color: rgba(206, 208, 211, 0.3);
     color: rgb(15, 23, 42);
+
+    transition: background-color 0.75s, color 0.5s;
 }
 
 .footer-link {

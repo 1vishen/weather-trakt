@@ -1,58 +1,20 @@
 /*CSS file to handle hover and active pseudo classes, mainly for animations*/
 
 .app-name:hover {
-    font-size: 20px;
-    font-weight: 100;
-
-    flex: 1;
-    max-width: 140px;
-    text-align: center;
 
     color: rgb(15, 23, 42);
     background-color: rgba(153, 182, 225, 0.3);
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 40px;
-    padding: 10px;
+
 }
 
 .search-box:hover {
-    font-family: 'Inter', sans-serif;
-    font-style: italic;
-    font-size: 20px;
-    font-weight: 100;
-    flex: 4;
 
-
-    border: 1px solid rgb(15, 23, 42);
-    border-radius: 40px;
-
-    margin: 10px;
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     background-color: rgba(153, 182, 225, 0.3);
 }
 
 .github-link:hover {
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    font-weight: 100;
 
     text-decoration: underline;
-    text-align: center;
-    cursor: pointer;
-
-    flex: 1;
-    max-width: 140px;
-
-
-    margin: 10px;
-    padding: 10px;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 40px;
-    border-color: black;
 
     background-color: rgb(15, 23, 42);
     color: white;
@@ -60,11 +22,6 @@
 
 .current-weather:hover {
 
-    width: 300px;
-    height: 500px;
-    flex-shrink: 0;
-    margin: 10px;
-    border-radius: 8px;
     background-color: rgba(153, 182, 225, 0.3);
 
 }
@@ -72,42 +29,23 @@
 .info-card:hover,
 .info-card-2:hover {
 
-    display: flex;
-    height: 245.5px;
-    border: none;
-    border-radius: 8px;
-    justify-content: center;
-    align-items: center;
     background-color: rgba(153, 182, 225, 0.3);
 }
 
 .future-weather:hover {
 
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 500px;
-    flex-shrink: 1;
-    margin: 10px;
-    border: none;
-    border-radius: 8px;
-    align-items: flex-start;
-    justify-content: space-around;
-    padding-left: 10px;
-    padding-right: 10px;
     background-color: rgba(153, 182, 225, 0.3);
 
 }
 
+.credits:hover {
+
+    background-color: rgba(153, 182, 225, 0.3);
+}
+
 .footer-link:hover {
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    font-weight: 100;
-
+   
     text-decoration: underline;
-
-    border: none;
-
     color: rgb(15, 23, 42);
 }
 
